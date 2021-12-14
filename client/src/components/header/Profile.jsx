@@ -1,6 +1,7 @@
 import { Typography, makeStyles, Menu , MenuItem} from "@material-ui/core";
 import { useState } from 'react';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
     name:{
@@ -35,6 +36,7 @@ const Profile = ({ account, setAccount}) => {
     }
     const logout = () => {
         setAccount('');
+        
     }
 
     return(
@@ -46,10 +48,10 @@ const Profile = ({ account, setAccount}) => {
             onClose={handleClose}
             className = {classes.component}
             >
-                <MenuItem onClick={() => {handleClose(); logout();}}>
+                <Link to={'/'}><MenuItem onClick={() => {handleClose(); logout();}} style={{ textDecoration: 'none',color: 'black'}}>
                     <PowerSettingsNewIcon fontSize="small"/>
                     <Typography className={classes.logout}>LogOut</Typography>
-                    </MenuItem>
+                    </MenuItem></Link>
             </Menu>
       </>
     );

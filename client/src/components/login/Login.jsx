@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, TextField, Box, Button, makeStyles, Typography } from '@material-ui/core';
 import { authenticateSignup, authenticateLogin } from '../../service/api.js';
+import { useHistory } from 'react-router-dom';
 
 const useStyle = makeStyles({
     component: {
@@ -116,10 +117,16 @@ const Login = ({ open, setOpen, setAccount }) => {
     const [signup, setSignup] = useState(signupInitialValues);
     const [login, setLogin] = useState(loginInitialValues);
     const [ error, setError ] = useState(false);
+    let history = useHistory();
 
-    const handleClose = () => {
+
+
+    const handleClose = (e) => {
         setOpen(false);
         toggleAccount(initialValue.login);
+        //console.log(e.target.name);
+        if(e)
+            history.push("/");
     }
     
     const toggleUserAccount = () => {
@@ -155,7 +162,7 @@ const Login = ({ open, setOpen, setAccount }) => {
     
 
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose= {(e) => {handleClose(e)}}>
             <DialogContent className={classes.component} >
                 <Box>
                     <Box className={classes.image}></Box>

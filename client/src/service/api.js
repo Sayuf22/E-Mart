@@ -19,3 +19,12 @@ export const authenticateLogin = async (user) => {
         console.error('error while calling login api:',error.message);
     }
 }
+
+export const payUsingPaytm = async(data) =>{
+    try {
+        let response= await axios.post(`${url}/payment`,data);
+        return response.data;
+    } catch (error) {
+        console.log('Error while calling paytm api');
+    }
+}
