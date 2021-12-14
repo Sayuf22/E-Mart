@@ -3,14 +3,14 @@ import express from 'express';
 
 import { userSignup, userLogIn } from '../controller/user-controller.js';
 import { getProducts, getProductById } from '../controller/product-controller.js';
-import { sellProduct } from '../controller/sell-controller.js';
+import { sellProduct } from '../controller/product-controller.js';
 import {addPaymentGateway,paymentResponse} from '../controller/payment-controller.js';
 
 const router = express.Router();
 
 router.post('/signup',userSignup);
 router.post('/login',userLogIn);
-router.post('/sell',sellProduct);
+router.post('/sell',sellProduct);   
 
 router.get('/products',getProducts);
 router.get('/product/:id',getProductById);

@@ -68,7 +68,7 @@ const Slide =  ({ products }) =>{
                         <Link to={`/product/${product.id}`}>
                             <Box className={classes.card}>
                                 <img src={product.url} className={classes.image}/>
-                                <Typography>{product.title.shortTitle}</Typography>
+                                <Typography>{product.title}</Typography>
                                 <Typography>{product.discount}</Typography>
                                 <Typography>{product.tagline}</Typography>
                             </Box>

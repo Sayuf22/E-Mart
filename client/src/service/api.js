@@ -20,6 +20,16 @@ export const authenticateLogin = async (user) => {
     }
 }
 
+
+
+export const authenticateProductUpload = async(product) => {
+    try{
+    return await axios.post(`${url}/sell`, product);
+    }catch(error){
+        console.log('Error while calling product api')
+    }
+}
+
 export const payUsingPaytm = async(data) =>{
     try {
         let response= await axios.post(`${url}/payment`,data);

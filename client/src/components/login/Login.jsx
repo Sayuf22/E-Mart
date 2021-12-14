@@ -189,5 +189,4 @@ const Login = ({ open, setOpen, setAccount }) => {
         </Dialog>
     )
 }
-
 export default Login;

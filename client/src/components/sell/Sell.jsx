@@ -1,6 +1,10 @@
-import { Box, Button, makeStyles, Typography } from "@material-ui/core";
-import { Select, MenuItem, TextField, formControlUnstyledClasses } from "@mui/material";
 import { useState } from "react";
+import {v4 as uuid } from 'uuid';
+import { Box, Button, makeStyles, Typography } from "@material-ui/core";
+import { Select, MenuItem, TextField } from "@mui/material";
+import { authenticateProductUpload } from "../../service/api";
+
+
 const useStyle = makeStyles({
     component:{
         marginTop: 60,
@@ -51,17 +55,42 @@ const useStyle = makeStyles({
     }
 })
 
+const initialProductState = {
+    title:'',
+    url:'',
+    username:'',
+    description: '',
+    price:'',
+    id:'',
+    category:''
+};
 
 
 const Sell = () => {
+    const [product, setproduct] = useState(initialProductState);
+    
+    
+    const AddProduct = async () =>{
+        console.log('HI');
+        product.id = String('product'+uuid());
+        let response = await authenticateProductUpload(product);
+        if(!response)
+        {
+            console.log("Error: Not Product Added");
+        }
+        else
+            console.log(product);
+    }
+
+    const onInputChange = (e) =>{
+        setproduct({...product, [e.target.name]: e.target.value });
+        console.log(product);
+    }
+
+
+
 
     const classes = useStyle();
-
-
-
-
-
-
 
     return(
         <Box className={classes.component}>
@@ -70,18 +99,22 @@ const Sell = () => {
                     <Typography className={classes.categoryText}>Category</Typography>
                     <Select 
                         label="Category"
-                        className={classes.categoryBox}>
+                        name="category"
+                        onChange={(e) =>onInputChange(e)}
+                        className={classes.categoryBox}
+                    >
                         <MenuItem value={'Car'}>car</MenuItem>
                         <MenuItem value={'Mobile'}>mobile</MenuItem>
                         <MenuItem value={'House'}>House</MenuItem>
                     </Select>
                 </Box>
                 <Box className={classes.input}>
-                    <TextField classname={classes.inputText}label="Product name"/><br/>
-                    <TextField classname={classes.inputText} label="Product price"/><br/>
-                    <TextField classname={classes.inputText} label="Product Description"/><br/>
-                    <TextField classname={classes.inputText} label="Link for image of product"/><br/>
-                    <Button className={classes.upload}>Upload</Button><br/>
+                    <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="username" label="Username"/><br/>
+                    <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="title" label="Product name"/><br/>
+                    <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="price" label="Product price"/><br/>
+                    <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="description" label="Product Description"/><br/>
+                    <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="url" label="Link for image of product"/><br/>
+                    <Button className={classes.upload} onClick={() => AddProduct()}>Upload</Button><br/>
                 </Box>
             </Box>
         </Box>

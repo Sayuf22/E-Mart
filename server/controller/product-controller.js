@@ -19,3 +19,13 @@ export const getProductById = async(request, response) => {
         console.log('Error: ',error.message);
     }
 }
+
+export const sellProduct = async(request, response) => {
+    try {
+        const product = request.body;
+        const newProduct = new Product(product);
+        await newProduct.save();
+    } catch (error) {
+        console.log('Error: ',error.message);
+    }
+}

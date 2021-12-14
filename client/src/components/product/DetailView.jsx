@@ -56,6 +56,7 @@ const DetailView = ({ match }) => {
                             <span>₹{product.price.cost}</span> &nbsp;&nbsp;&nbsp;
                             <span className={classes.greyTextColor}><strike>₹{product.price.mrp}</strike></span> &nbsp;&nbsp;&nbsp;
                             <span style={{ color: '#388E3C' }}>{product.price.discount} off</span>
+                            <span>{product.description}</span>
                         </Typography>
                     </Box>
                 </Box>

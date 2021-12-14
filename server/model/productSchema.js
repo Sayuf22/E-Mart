@@ -2,18 +2,22 @@ import mongoose from 'mongoose';
 
 
 const productSchema = new mongoose.Schema({
-    id: String,
+    username: String,
+    description: {
+        type: String,
+        
+    },
+    price: Object,
+    id:{
+        type: String,
+    },
     url: String,
     detailUrl: String,
-    title: Object,
-    price: Object,
-    description: String,
+    title: String,
     discount: String,
     tagline: String,
-    username: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'user'
-    }
+    category: String
+    
 })
 
 
