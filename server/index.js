@@ -6,7 +6,6 @@ import {v4 as uuid} from 'uuid';
 
 //Components
 import Connection  from './database/db.js';
-import DefaultData from './default.js';
 import Routes from './routes/routes.js';
 
 
@@ -34,7 +33,6 @@ Connection(username,password);
 app.listen(PORT,()=>console.log(`Server is Successfully running at PORT ${PORT}`));
 
 //data to DataBase
-DefaultData();
 
 
 export let paytmMerchantKey = process.env.PAYTM_MERCHANT_KEY;

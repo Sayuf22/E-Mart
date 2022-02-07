@@ -37,7 +37,7 @@ const LocationBar = () =>{
               <Search />
             </div>
             <InputBase
-              placeholder="Location"
+              placeholder="India"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../redux/actions/productActions";
 import { useEffect } from "react";
-import { Box, makeStyles, Typography } from "@material-ui/core";
+import { Box, makeStyles, Typography, Button } from "@material-ui/core";
 
 //component
 import ActionItems from "./ActionItems";
@@ -25,8 +25,30 @@ const useStyle = makeStyles({
     greyTextColor:{
         color: 'grey'
     },
+    title:{
+        textAlign: 'center',
+        fontWeight: 600,
+        fontSize: 30
+    },
     price: {
-        fontSize: 12
+        fontSize: 20,
+        fontWeight: 550
+    },
+    button:{
+        height: 50,
+        width:'50%',
+        background:'#002F34',
+        color: 'white',
+        borderRadius: 20,
+        '&:hover':{
+            background: '#FFF',
+            color: '#002F34',
+            fontWeight: 600,
+            
+        }
+    },
+    buttonPadding:{
+        paddingLeft: '20'
     }
 });
 
@@ -51,12 +73,11 @@ const DetailView = ({ match }) => {
                         <ActionItems product={product} />
                     </Box>
                     <Box className={classes.RightContainer}>
-                        <Typography>{product.title.longTitle}</Typography>
+                        <Typography className={classes.title}>{product.title}</Typography>
                         <Typography>
-                            <span>₹{product.price.cost}</span> &nbsp;&nbsp;&nbsp;
-                            <span className={classes.greyTextColor}><strike>₹{product.price.mrp}</strike></span> &nbsp;&nbsp;&nbsp;
-                            <span style={{ color: '#388E3C' }}>{product.price.discount} off</span>
-                            <span>{product.description}</span>
+                            <span className={classes.price}>Price: ₹{product.price}</span> &nbsp;&nbsp;&nbsp;<br/><br/><b>Product Description</b><br/>
+                            <span className={classes.desciption}><i>{product.description}</i></span><br/><br/>
+                            <span className={classes.username}><b>Seller:</b> <u>{product.username}</u></span><br/><br/><br/><br/>
                         </Typography>
                     </Box>
                 </Box>

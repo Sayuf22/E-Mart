@@ -3,7 +3,7 @@ import {v4 as uuid } from 'uuid';
 import { Box, Button, makeStyles, Typography } from "@material-ui/core";
 import { Select, MenuItem, TextField } from "@mui/material";
 import { authenticateProductUpload } from "../../service/api";
-
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
     component:{
@@ -12,7 +12,7 @@ const useStyle = makeStyles({
     box: {
         marginTop: '10%',
         marginLeft: '30%',
-        height: 'full',
+        height: '90vh',
         width: '75vh',
         backgroundColor: "#f2f2f2",
         //alignItems: 'center'
@@ -46,6 +46,8 @@ const useStyle = makeStyles({
         borderRadius: 20,
         padding:'20px 0',
         fontSize: 20,
+        textTransform: 'none',
+        width: '100%',
         fontWeight: 600,
         boxShadow: '0 2px 4px 0 rgb(0 0 0 / 20%)',
         '&:hover':{
@@ -103,9 +105,14 @@ const Sell = () => {
                         onChange={(e) =>onInputChange(e)}
                         className={classes.categoryBox}
                     >
-                        <MenuItem value={'Car'}>car</MenuItem>
-                        <MenuItem value={'Mobile'}>mobile</MenuItem>
-                        <MenuItem value={'House'}>House</MenuItem>
+                        <MenuItem value={'Car'}>Car</MenuItem>
+                        <MenuItem value={'MotorCycle'}>MotorCycle</MenuItem>
+                        <MenuItem value={'Mobile Phone'}>Mobile Phone</MenuItem>
+                        <MenuItem value={'Home Appliances'}>Home Appliances</MenuItem>
+                        <MenuItem value={'Fashion'}>Fashion</MenuItem>
+                        <MenuItem value={'For Sale: House & Apartment'}>For Sale: House or Apartment</MenuItem>
+                        <MenuItem value={'Commercial & Other Vehicles'}>Commercial or Other Vehicles</MenuItem>
+                        <MenuItem value={'For Rent: Houses & Apartments'}>For Rent: Houses and Apartments</MenuItem>
                     </Select>
                 </Box>
                 <Box className={classes.input}>
@@ -114,7 +121,7 @@ const Sell = () => {
                     <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="price" label="Product price"/><br/>
                     <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="description" label="Product Description"/><br/>
                     <TextField classname={classes.inputText} onChange = {(e) =>onInputChange(e)} name="url" label="Link for image of product"/><br/>
-                    <Button className={classes.upload} onClick={() => AddProduct()}>Upload</Button><br/>
+                    <Link to='/' style={{ textDecoration: 'none'}}><Button className={classes.upload} onClick={() => AddProduct()}>Upload</Button><br/></Link>
                 </Box>
             </Box>
         </Box>
